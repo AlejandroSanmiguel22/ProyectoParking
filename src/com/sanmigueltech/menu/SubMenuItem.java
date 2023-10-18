@@ -5,6 +5,16 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 import javax.swing.JButton;
+import com.sanmigueltech.form.ingresarClientePanel;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.Rectangle2D;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
@@ -17,6 +27,47 @@ public class SubMenuItem extends JButton {
         setContentAreaFilled(false);
         setHorizontalAlignment(SwingConstants.LEFT);
         initStyle();
+
+        addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Determinar qué panel mostrar basándose en el texto del botón
+                JPanel panelToShow = null;
+                switch (text) {
+                    case "Registro de entrada":
+                        System.out.println("Boton presionado! 1");
+                        panelToShow = new ingresarClientePanel();
+                        break; 
+                        
+                    case "Registro de salida":
+                        System.out.println("Boton presionado! 2");           
+                        break;
+                        
+                        
+                    // Puedes agregar más casos si tienes más botones
+                        
+                    case "Finanzas":
+                        System.out.println("Boton presionado! 5");
+                        break;
+                        
+                }
+
+                if (panelToShow != null) {
+                    MainForm main = MainForm.getInstance();
+                    if (main != null) {
+                        main.setLayout(new BorderLayout());
+                        main.removeAll();  // Limpia el contenido actual de mainForm
+                        main.add(panelToShow, BorderLayout.CENTER);
+                        main.revalidate();
+                        main.repaint();
+                    } else {
+                        // Maneja el caso cuando main es null
+                        System.err.println("MainForm no está inicializado.");
+                    }
+                }
+            }
+        });
+
     }
 
 private void initStyle() {
