@@ -184,11 +184,18 @@ public class PanelParking extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PanelParking mainFrame = new PanelParking();
+                PanelParking FrameMain = new PanelParking();
 
-                // Configura el JFrame para que se abra en pantalla completa
-                mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                mainFrame.setVisible(true);
+                // Establecer el tamaño específico para el JFrame
+                FrameMain.setSize(1330, 1039);
+
+                // Centrar el JFrame en la pantalla
+                FrameMain.setLocationRelativeTo(null);
+
+                // Bloquear el redimensionamiento de la ventana
+                FrameMain.setResizable(false);
+
+                FrameMain.setVisible(true);
             }
         });
     }
