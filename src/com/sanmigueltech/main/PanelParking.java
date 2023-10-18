@@ -39,7 +39,7 @@ public class PanelParking extends javax.swing.JFrame {
 
             @Override
             public void subMenuSelected(MainForm mainForm, int index, int subMenuIndex, Component menuItem) {
-                mainForm.displayForm(new Form1("Form " + index + "-" + subMenuIndex));
+                
             }
         });
         menu.setSelectedIndex(0);
